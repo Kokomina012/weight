@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness Body Type Analyzer</title>
+  <style>
+    body { font-family: Arial; background: #f0f0f0; display:flex; justify-content:center; align-items:center; height:100vh; margin:0; }
+    .container { background:white; padding:30px; border-radius:15px; box-shadow:0 0 15px rgba(0,0,0,0.2); text-align:center; width:350px; }
+    input { width:80%; padding:8px; margin:10px 0; border-radius:5px; border:1px solid #ccc; font-size:16px; }
+    button { padding:10px 20px; font-size:16px; border:none; border-radius:5px; background:#28a745; color:white; cursor:pointer; }
+    button:hover { background:#218838; }
+    #result { margin-top:20px; font-size:18px; font-weight:bold; }
+    #loading { font-style:italic; color:#555; display:none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Fitness Body Type Analyzer</h2>
+    <input type="number" id="weight" placeholder="Enter your weight (kg)">
+    <br>
+    <button onclick="checkWeight()">Analyze</button>
+    <p id="loading">Analyzing your body type...</p>
+    <p id="result"></p>
+  </div>
+  <script>
+    function checkWeight() {
+      var poids = parseInt(document.getElementById("weight").value);
+      var resultText = "";
+      var loading = document.getElementById("loading");
+      var result = document.getElementById("result");
+
+      result.innerText = "";
+
+      if (isNaN(poids)) {
+        result.innerText = "Please enter a valid number.";
+        return;
+      }
+
+      loading.style.display = "block";
+
+      setTimeout(function() {
+        loading.style.display = "none";
+        if (poids < 70) {
+          resultText = "hhh u skinny 😎";
+        } else {
+          resultText = "U fat 😭";
+        }
+        result.innerText = resultText;
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
